@@ -4,6 +4,106 @@
   <meta charset="UTF-8" />
   <title>Edit Feedback</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f6f9ff, #e0ecff);
+  min-height: 100vh;
+  padding-left: 260px;
+  color: #2a3659;
+}
+
+.container {
+  padding: 50px 40px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #1f2d5a;
+  margin-bottom: 25px;
+}
+
+/* Form */
+form {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #3d4b6a;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cfd9e4;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4e91fc;
+  box-shadow: 0 0 6px rgba(78, 145, 252, 0.3);
+  outline: none;
+}
+
+.btn {
+  background-color: #4e91fc;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #3b7be4;
+  transform: translateY(-2px);
+}
+
+.text-success {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #28a745;
+  margin-top: 20px;
+  animation: fadeInUp 0.4s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding-left: 0; }
+  .container { padding: 30px 20px; }
+  h2 { font-size: 1.8rem; }
+}
+</style>
+
 </head>
 <body>
   <!-- Sidebar container -->

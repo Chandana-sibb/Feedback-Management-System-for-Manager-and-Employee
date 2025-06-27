@@ -4,6 +4,95 @@
   <meta charset="UTF-8">
   <title>Export Feedback</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f4f8ff, #d9e8ff);
+  padding-left: 260px;
+  min-height: 100vh;
+  color: #2c3e50;
+}
+
+.container {
+  padding: 50px 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  animation: fadeIn 0.8s ease;
+  max-width: 800px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2e5a;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 10px 0;
+  color: #444c5e;
+}
+
+p strong {
+  display: inline-block;
+  width: 160px;
+  color: #1c2c4a;
+}
+
+#feedback-box div {
+  display: inline;
+  color: #556681;
+}
+
+.btn {
+  background-color: #4e91fc;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #3b7be4;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+
+  .container {
+    padding: 30px 20px;
+  }
+
+  p strong {
+    width: 100%;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+</style>
+
 </head>
 <body>
   <div id="sidebar-container"></div>
