@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Export Feedback</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <script defer src="/js/sidebar.js?v=1"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof loadSidebar === 'function') loadSidebar();
+    });
+  </script>
+
+  <div class="container mt-4 feedback-box" id="feedback-box">
+    <h3>Feedback Report</h3>
+    <p><strong>Employee:</strong> <span id="employee-name">Loading...</span></p>
+    <p><strong>Strengths:</strong> <div id="strengths-text"></div></p>
+    <p><strong>Areas to Improve:</strong> <div id="areas-text"></div></p>
+    <p><strong>Sentiment:</strong> <div id="sentiment-text"></div></p>
+    <p><strong>Comment:</strong> <div id="comment-text"></div></p>
+    <p><strong>Timestamp:</strong> <div id="timestamp-text"></div></p>
+
+    <button type="button" id="export-btn" class="btn btn-primary mt-3">
+      Export as PDF
+    </button>
+  </div>
+
+  <script defer src="/js/export_feedback.js?v=4"></script>
+</body>
+</html>

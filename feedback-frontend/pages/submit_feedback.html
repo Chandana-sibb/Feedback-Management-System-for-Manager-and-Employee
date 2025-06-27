@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submit Feedback</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfcfb, #e2d1f9);
+  padding-left: 260px;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 50px 40px;
+  animation: fadeIn 0.8s ease;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #5e35b1;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+form {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-3px);
+}
+
+label {
+  font-weight: 600;
+  color: #4527a0;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-top: 6px;
+  margin-bottom: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 6px rgba(0, 188, 212, 0.4);
+}
+
+.form-check {
+  margin-top: 10px;
+}
+
+.form-check-label {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.btn {
+  padding: 12px 26px;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  background: linear-gradient(to right, #7b1fa2, #00acc1);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #6a1b9a, #0097a7);
+  transform: scale(1.05);
+}
+
+.text-success {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #388e3c;
+  margin-top: 20px;
+  animation: fadeInUp 0.5s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+
+  .container {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+  }
+}
+</style>
+
+
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <script defer src="/js/sidebar.js?v=1"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof loadSidebar === 'function') {
+        loadSidebar();
+      }
+    });
+  </script>
+
+  <div class="container mt-4">
+    <h2>Submit Feedback</h2>
+    <form id="feedback-form" class="mt-3">
+      <!-- Normal dropdown flow -->
+      <div id="employee-select-group" class="form-group">
+        <label>Employee</label>
+        <select id="employee-select" class="form-control">
+          <option value="" disabled selected>Select employee</option>
+        </select>
+      </div>
+
+      <!-- Request response mode -->
+      <div id="employee-readonly-group" class="form-group" style="display: none;">
+        <label>Employee</label>
+        <input id="employee-readonly" class="form-control" readonly />
+        <input type="hidden" id="employee-id" />
+      </div>
+
+      <div class="form-group">
+        <label>Strengths</label>
+        <textarea id="strengths" class="form-control" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Areas to Improve</label>
+        <textarea id="areas" class="form-control" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Sentiment</label>
+        <select id="sentiment" class="form-control" required>
+          <option value="">Choose</option>
+          <option value="positive">Positive</option>
+          <option value="neutral">Neutral</option>
+          <option value="negative">Negative</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Optional Comment</label>
+        <textarea id="comment" class="form-control" rows="2"></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input type="checkbox" id="anonymous" class="form-check-input" />
+        <label for="anonymous" class="form-check-label">Submit anonymously</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div id="feedback-msg" class="text-success mt-2" style="display: none;">
+      Feedback submitted!
+    </div>
+  </div>
+
+  <script defer src="/js/feedback.js?v=4"></script>
+</body>
+</html>

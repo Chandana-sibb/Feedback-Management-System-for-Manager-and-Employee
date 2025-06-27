@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #eaf0ff, #f4f9ff);
+  min-height: 100vh;
+  padding-left: 260px;
+  overflow-x: hidden;
+  color: #2b2b2b;
+}
+
+.container {
+  padding: 50px 40px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #1d2b4f;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Pinterest-like masonry grid using CSS columns */
+#feedback-timeline {
+  column-count: 3;
+  column-gap: 20px;
+  padding-top: 10px;
+}
+
+@media (max-width: 1200px) {
+  #feedback-timeline {
+    column-count: 2;
+  }
+}
+@media (max-width: 768px) {
+  #feedback-timeline {
+    column-count: 1;
+  }
+}
+
+/* Card styles */
+.feedback-card {
+  background: #fff;
+  display: inline-block;
+  width: 100%;
+  border-radius: 16px;
+  margin: 0 0 20px;
+  padding: 20px;
+  border-left: 6px solid transparent;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: all 0.3s ease-in-out;
+  break-inside: avoid;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.feedback-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.feedback-card::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, transparent 80%);
+  transform: rotate(45deg);
+}
+
+.feedback-card.positive {
+  border-left-color: #42b72a;
+  background-color: #e9f9ec;
+}
+
+.feedback-card.neutral {
+  border-left-color: #7c6f99;
+  background-color: #f2f2f2;
+}
+
+.feedback-card.negative {
+  border-left-color: #e53538;
+  background-color: #ffecec;
+}
+
+.feedback-card h5 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.feedback-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 6px 0;
+}
+
+.feedback-timestamp {
+  font-size: 0.85rem;
+  color: #7a7a7a;
+  margin-top: 12px;
+  text-align: right;
+}
+
+/* Smooth entrance */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+
+
+
+</head>
+<body>
+  <div id="sidebar-container"></div>
+<script defer src="/js/sidebar.js?v=1"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof loadSidebar === 'function') {
+      loadSidebar();  // ✅ only call if defined
+    } else {
+      console.error("loadSidebar is not defined");
+    }
+  });
+</script>
+
+
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <h2>Welcome, <span id="employee-name"></span></h2>
+      
+    </div>
+
+    <div id="feedback-timeline" class="mt-4">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <script defer src="/js/dashboard_employee.js?v=1"></script>
+</body>
+</html>

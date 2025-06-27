@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Requests</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #f8faff, #e6e9f0);
+  padding-left: 260px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 40px;
+  animation: fadeIn 0.8s ease;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #4b0082;
+  margin-bottom: 30px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+label {
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+.form-control {
+  font-size: 1rem;
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 6px rgba(106, 17, 203, 0.3);
+  outline: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+thead {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+}
+
+thead th {
+  padding: 16px;
+  text-align: left;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #2c2c2c;
+}
+
+tbody tr {
+  animation: rowFade 0.5s ease;
+}
+
+tbody tr:hover {
+  background-color: #f2f5ff;
+  transition: background 0.3s ease;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.status-fulfilled {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+button.action-btn {
+  background: transparent;
+  border: none;
+  color: #6a11cb;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+button.action-btn:hover {
+  color: #2575fc;
+  transform: scale(1.2);
+}
+
+#no-requests {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #888;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rowFade {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+
+  .container {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  thead th, tbody td {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <script defer src="/js/sidebar.js?v=1"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof loadSidebar === 'function') {
+        loadSidebar();
+      }
+    });
+  </script>
+
+  <div class="container mt-4">
+    <h2>Employee Feedback Requests</h2>
+
+    <div class="form-group mb-3">
+      <label for="status-filter">Filter by Status:</label>
+      <select id="status-filter" class="form-control" style="width: 200px;">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="fulfilled">Handled</option> <!-- ✅ Changed to match backend -->
+      </select>
+    </div>
+
+    <table class="table mt-3" id="requests-table">
+      <thead>
+        <tr>
+          <th>Request ID</th>
+          <th>Employee Name</th>
+          <th>Status</th>
+          <th>Requested At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="no-requests" class="text-muted" style="display: none;">No feedback requests found.</div>
+  </div>
+
+  <!-- ✅ View Requests Script -->
+  <script defer src="/js/view_requests.js?v=2"></script>
+
+</body>
+</html>

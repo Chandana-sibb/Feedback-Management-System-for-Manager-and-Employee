@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ddf2fc, #f0f7ff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2c3e50;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 20px;
+      padding: 50px 40px;
+      width: 95%;
+      max-width: 480px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      animation: fadeInSlide 0.8s ease;
+    }
+
+    h1 {
+      font-weight: 600;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #1a237e;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      margin: 0 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #8e44ad, #6a11cb);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .btn {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Feedback Management System</h1>
+    <p>Please log in or register to manage and view feedback efficiently.</p>
+    <a href="/login.html" class="btn btn-primary">Login</a>
+    <a href="/register.html" class="btn btn-secondary">Register</a>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+
+    if (token && role === 'manager') {
+      window.location.href = '/pages/dashboard_manager.html';
+    } else if (token && role === 'employee') {
+      window.location.href = '/pages/dashboard_employee.html';
+    }
+  </script>
+</body>
+</html>

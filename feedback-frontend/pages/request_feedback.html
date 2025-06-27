@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Request Feedback</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #fafcff, #f3f6fd);
+  min-height: 100vh;
+  padding-left: 260px;
+  color: #2b2e4a;
+}
+
+.container {
+  padding: 60px 50px;
+  animation: fadeSlide 0.6s ease-in-out;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #303d60;
+  letter-spacing: -0.5px;
+}
+
+/* Form */
+form {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 45px 35px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 1px solid #d3dce6;
+  background-color: #f8f9fb;
+  margin-bottom: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+  outline: none;
+}
+
+/* Fancy checkbox tags */
+.form-group input[type="checkbox"] {
+  display: none;
+}
+
+.form-group label span {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background-color: #e8efff;
+  color: #334155;
+  font-weight: 500;
+  font-size: 0.92rem;
+  margin: 5px 8px 5px 0;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group input[type="checkbox"]:checked + span {
+  background-color: #667eea;
+  color: white;
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+/* Button */
+.btn {
+  background-color: #667eea;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.25);
+}
+
+.btn:hover {
+  background-color: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(90, 103, 216, 0.3);
+}
+
+/* Success message */
+.text-success {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #10b981;
+  margin-top: 24px;
+  animation: fadeInUp 0.4s ease;
+}
+
+/* Animations */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body { padding-left: 0; }
+  .container { padding: 30px 20px; }
+  h2 { font-size: 2rem; }
+  form { padding: 30px 20px; }
+}
+</style>
+
+
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <script defer src="/js/sidebar.js?v=1"></script>
+  <script>loadSidebar()</script>
+
+  <div class="container mt-4">
+    <h2>Request Feedback</h2>
+    <form id="request-form" class="mt-3">
+      <div class="form-group">
+        <label for="manager-select">Select Manager</label>
+        <select id="manager-select" class="form-control" required>
+          <option value="">Loading managers...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Reason / Context</label>
+        <textarea id="reason" class="form-control" rows="3" required></textarea>
+      </div>
+
+      
+
+      <button type="submit" class="btn btn-primary">Submit Request</button>
+    </form>
+    <div id="request-msg" class="text-success mt-2" style="display:none;">
+      Request sent!
+    </div>
+  </div>
+
+  <script defer src="/js/request.js?v=2"></script>
+</body>
+</html>

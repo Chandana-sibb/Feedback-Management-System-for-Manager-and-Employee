@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Feedback</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <!-- Sidebar container -->
+  <div id="sidebar-container"></div>
+  <!-- Load sidebar script and defer its execution until parsed -->
+  <script src="/js/sidebar.js?v=2"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', loadSidebar);
+  </script>
+
+  <div class="container mt-4">
+    <h2>Edit Feedback</h2>
+    <form id="edit-form" class="mt-3">
+      <div class="form-group">
+        <label>Employee</label>
+        <input id="employee-name" class="form-control" readonly />
+      </div>
+      <div class="form-group">
+        <label>Strengths</label>
+        <textarea id="edit-strengths" class="form-control" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Areas to Improve</label>
+        <textarea id="edit-areas" class="form-control" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Sentiment</label>
+        <select id="edit-sentiment" class="form-control" required>
+          <option value="positive">Positive</option>
+          <option value="neutral">Neutral</option>
+          <option value="negative">Negative</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <div id="edit-msg" class="text-success mt-2" style="display:none;">
+      Feedback updated!
+    </div>
+  </div>
+
+  <!-- Edit Feedback JS -->
+  <script defer src="/js/edit_feedback.js?v=2"></script>
+</body>
+</html>
