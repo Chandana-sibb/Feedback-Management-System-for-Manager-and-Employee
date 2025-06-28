@@ -3,24 +3,26 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager 
 from config import Config
 from flask_cors import CORS
-from app.routes.auth_routes import auth_bp
-from app.routes.feedback_routes import feedback_bp
 
 
 db = SQLAlchemy()
 jwt = JWTManager()
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static', template_folder='templates')
     app.config.from_object(Config)
 
     db.init_app(app)
+    
+    
 
     jwt.init_app(app)
     CORS(app)  # ✅ Enable CORS inside the app factory
 
     # Import and register blueprints
-    
+    from app.routes.auth_routes import auth_bp
+    from app.routes.feedback_routes import feedback_bp
+
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(feedback_bp, url_prefix='/api/feedback')
 
